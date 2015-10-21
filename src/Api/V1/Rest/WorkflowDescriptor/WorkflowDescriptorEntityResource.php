@@ -6,6 +6,7 @@
 namespace OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptor;
 
 
+use OldTown\Workflow\Basic\BasicWorkflow;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use ZF\Rest\AbstractResourceListener;
@@ -23,11 +24,22 @@ class WorkflowDescriptorEntityResource extends AbstractResourceListener implemen
 
     /**
      * @param mixed $id
-     * @return void
+     * @return \OldTown\Workflow\Loader\WorkflowDescriptor
      */
     public function fetch($id)
     {
-        die('fetch');
+
+            \OldTown\Workflow\Config\DefaultConfiguration::addDefaultPathToConfig(__DIR__ . '/../../../../../../../../config/workflow');
+            \OldTown\Workflow\Loader\XmlWorkflowFactory::addDefaultPathToWorkflows(__DIR__ . '/../../../../../../../../config/workflow');
+
+            $wf = new BasicWorkflow('johndoe');
+            //$id = $wf->initialize('example', 100, null);
+
+
+            $workflowDescriptor = $wf->getWorkflowDescriptor('example');
+
+            return $workflowDescriptor;
+
     }
 
     /**

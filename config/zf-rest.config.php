@@ -6,8 +6,8 @@
 namespace OldTown\Workflow\Designer\Server;
 
 use OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptor\WorkflowDescriptorCollection;
-use OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptor\WorkflowDescriptorEntity;
 use OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptor\WorkflowDescriptorEntityResource;
+use OldTown\Workflow\Loader\WorkflowDescriptor;
 
 return [
     'zf-rest' => [
@@ -24,7 +24,7 @@ return [
             'collection_query_whitelist' => [],
             'page_size'                  => 25,
             'page_size_param'            => 'pageSize',
-            'entity_class'               => WorkflowDescriptorEntity::class,
+            'entity_class'               => WorkflowDescriptor::class,
             'collection_class'           => WorkflowDescriptorCollection::class,
             'service_name'               => 'workflowDescriptor',
             'route_identifier_name'      => 'id',
