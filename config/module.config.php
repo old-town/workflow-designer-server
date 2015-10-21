@@ -10,9 +10,9 @@ $config = [
 
 
 return array_merge_recursive(
-    include __DIR__ . '/view.config.php',
+    include __DIR__ . '/service-manager.config.php',
     include __DIR__ . '/router.config.php',
-    include __DIR__ . '/controller.config.php',
-    include __DIR__ . '/assetic.config.php',
+    include __DIR__ . '/zf-rest.config.php',
+    include __DIR__ . '/zf-content-negotiation.config.php',
     $config
 );

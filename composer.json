@@ -19,6 +19,7 @@
   ],
   "require": {
     "php": ">=5.5.0",
+    "old-town/workflow": "dev-dev",
     "zendframework/zend-modulemanager": "~2.4.0",
     "zendframework/zend-mvc": "~2.4.0",
     "zendframework/zend-servicemanager": "~2.4.0",
@@ -45,7 +46,7 @@
   },
   "autoload": {
     "psr-4": {
-      "OldTown\\Workflow\\Designer\\Client\\": "src/"
+      "OldTown\\Workflow\\Designer\\Server\\": "src/"
     },
     "classmap": [
       "./Module.php"
@@ -58,5 +59,11 @@
     "classmap": [
       "./test/phpunit/Bootstrap.php"
     ]
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:old-town/old-town-workflow.git"
+    }
+  ]
 }

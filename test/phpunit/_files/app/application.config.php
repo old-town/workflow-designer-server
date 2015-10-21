@@ -2,7 +2,7 @@
 return array(
     'modules' => array(
         'AsseticBundle',
-        'OldTown\\Workflow\\Designer\\Client'
+        'OldTown\\Workflow\\Designer\\Server'
     ),
 
     'module_listener_options' => array(

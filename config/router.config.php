@@ -5,8 +5,6 @@
  */
 namespace OldTown\Workflow\Designer\Server;
 
-use OldTown\Workflow\Designer\Server\Controller\WorkflowDesignerController;
-
 return [
     'router' => [
         'routes' => [
@@ -17,20 +15,25 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'view' => [
-                        'type' => 'Literal',
-                        'options' => [
-                            'route' => 'app',
-                            'defaults' => [
-                                'controller' => WorkflowDesignerController::class,
-                                'action' => 'app'
-                            ]
-                        ],
-                    ],
                     'api' => [
                         'type' => 'Literal',
                         'options' => [
                             'route' => 'api/',
+                        ],
+                        'may_terminate' => true,
+                        'child_routes' => [
+                            'workflow-descriptor' => [
+                                'type' => 'Segment',
+                                'options' => [
+                                    'route' => 'v1/rest/workflow-descriptor[/:id][/]',
+                                    'constraints' => [
+                                        'id' => '[0-9]*',
+                                    ],
+                                    'defaults' => [
+                                        'controller' => 'OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptorController'
+                                    ]
+                                ],
+                            ]
                         ]
                     ]
                 ]

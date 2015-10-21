@@ -5,12 +5,12 @@
  */
 namespace OldTown\Workflow\Designer\Server;
 
-use OldTown\Workflow\Designer\Server\Controller\WorkflowDesignerController;
+use OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptor\WorkflowDescriptorEntityResource;
 
 return [
-    'controllers' => [
+    'service_manager' => [
         'invokables' => [
-            WorkflowDesignerController::class => WorkflowDesignerController::class
+            WorkflowDescriptorEntityResource::class => WorkflowDescriptorEntityResource::class
         ]
     ]
 ];
