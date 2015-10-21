@@ -22,7 +22,10 @@
     "zendframework/zend-modulemanager": "~2.4.0",
     "zendframework/zend-mvc": "~2.4.0",
     "zendframework/zend-servicemanager": "~2.4.0",
-    "widmogrod/zf2-assetic-module": "dev-master"
+    "zfcampus/zf-rest": "~1.2",
+    "zfcampus/zf-configuration": "~1.1",
+    "zfcampus/zf-content-validation": "~1.2"
+
   },
   "require-dev": {
     "ext-curl": "*",
