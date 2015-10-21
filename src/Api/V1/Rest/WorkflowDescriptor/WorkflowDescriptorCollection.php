@@ -14,5 +14,4 @@ use Zend\Paginator\Paginator;
  */
 class WorkflowDescriptorCollection extends Paginator
 {
-
 }

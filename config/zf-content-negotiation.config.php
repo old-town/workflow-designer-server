@@ -5,6 +5,8 @@
  */
 namespace OldTown\Workflow\Designer\Server;
 
+use OldTown\Workflow\Designer\Server\View\WorkflowDescriptorApiModel;
+
 $content_type_whitelist = [
     'multipart/form-data' => 'multipart/form-data',
     'application/x-www-form-urlencoded' => 'application/x-www-form-urlencoded',
@@ -16,9 +18,23 @@ $accept_whitelist = [
 ];
 
 return [
+
     'zf-content-negotiation' => [
+        'selectors'              => [
+            'WorkflowDescriptor' => [
+                WorkflowDescriptorApiModel::class => [
+                    'text/xml'
+                ],
+                'ZF\ContentNegotiation\JsonModel'       => [
+                    'application/json'
+                ],
+                'ZF\Hal\View\HalJsonModel'              => [
+                    'application/*+json'
+                ]
+            ]
+        ],
         'controllers' => [
-            'OldTown\\Workflow\\Designer\\Server\\Api\\V1\\Rest\\WorkflowDescriptorController' => 'Json',
+            'OldTown\\Workflow\\Designer\\Server\\Api\\V1\\Rest\\WorkflowDescriptorController' => 'WorkflowDescriptor',
         ],
         'accept_whitelist' => [
             'OldTown\\Workflow\\Designer\\Server\\Api\\V1\\Rest\\WorkflowDescriptorController' => $accept_whitelist,

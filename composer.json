@@ -22,6 +22,7 @@
     "old-town/workflow": "dev-dev",
     "zendframework/zend-modulemanager": "~2.4.0",
     "zendframework/zend-mvc": "~2.4.0",
+    "zendframework/zend-view": "~2.4.0",
     "zendframework/zend-servicemanager": "~2.4.0",
     "zfcampus/zf-rest": "~1.2",
     "zfcampus/zf-configuration": "~1.1",

@@ -1,7 +1,13 @@
 <?php
 return array(
     'modules' => array(
-        'AsseticBundle',
+        'ZF\\ApiProblem',
+        'ZF\\Configuration',
+        'ZF\\MvcAuth',
+        'ZF\\Hal',
+        'ZF\\ContentNegotiation',
+        'ZF\\ContentValidation',
+        'ZF\\Rest',
         'OldTown\\Workflow\\Designer\\Server'
     ),
 
