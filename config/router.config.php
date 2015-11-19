@@ -25,9 +25,9 @@ return [
                             'workflow-descriptor' => [
                                 'type' => 'Segment',
                                 'options' => [
-                                    'route' => 'v1/rest/workflow-descriptor[/:id][/]',
+                                    'route' => 'v1/rest/workflow-manager/[:workflowManager]/workflow-name[/:workflowName][/]',
                                     'constraints' => [
-                                        'id' => '[0-9]*',
+                                        //'id' => '[0-9]*',
                                     ],
                                     'defaults' => [
                                         'controller' => 'OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptorController'

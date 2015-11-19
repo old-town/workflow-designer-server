@@ -27,7 +27,7 @@ return [
             'entity_class'               => WorkflowDescriptor::class,
             'collection_class'           => WorkflowDescriptorCollection::class,
             'service_name'               => 'workflowDescriptor',
-            'route_identifier_name'      => 'id',
+            'route_identifier_name'      => 'workflowName',
         ],
     ],
 ];

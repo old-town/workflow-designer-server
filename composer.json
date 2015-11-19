@@ -21,6 +21,7 @@
   "require": {
     "php": ">=5.5.0",
     "old-town/workflow": "dev-dev",
+    "old-town/workflow-zf2":  "dev-dev",
     "zendframework/zend-modulemanager": "~2.4.0",
     "zendframework/zend-mvc": "~2.4.0",
     "zendframework/zend-view": "~2.4.0",
@@ -74,6 +75,10 @@
     {
       "type": "vcs",
       "url": "git@github.com:old-town/old-town-log.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:old-town/workflow-zf2.git"
     }
   ]
 }

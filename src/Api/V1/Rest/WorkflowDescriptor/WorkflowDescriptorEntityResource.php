@@ -5,10 +5,12 @@
  */
 namespace OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptor;
 
-use OldTown\Workflow\Basic\BasicWorkflow;
+use OldTown\Workflow\WorkflowInterface;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use ZF\Rest\AbstractResourceListener;
+use ZF\ApiProblem\ApiProblemResponse;
+use ZF\ApiProblem\ApiProblem;
 
 
 /**
@@ -25,17 +27,39 @@ class WorkflowDescriptorEntityResource extends AbstractResourceListener implemen
      * @param mixed $id
      *
      * @return \OldTown\Workflow\Loader\WorkflowDescriptor
+     * @throws \Zend\ServiceManager\Exception\ServiceNotFoundException
      */
     public function fetch($id)
     {
-        \OldTown\Workflow\Config\DefaultConfiguration::addDefaultPathToConfig(__DIR__ . '/../../../../../../../../config/workflow');
-        \OldTown\Workflow\Loader\XmlWorkflowFactory::addDefaultPathToWorkflows(__DIR__ . '/../../../../../../../../config/workflow');
+        $routeMath = $this->getEvent()->getRouteMatch();
+        $workflowManager = $routeMath->getParam('workflowManager', null);
 
-        $wf = new BasicWorkflow('johndoe');
+        if (null === $workflowManager || '' === trim($workflowManager)) {
+            return new ApiProblemResponse(
+                new ApiProblem(400, 'Invalid workflow manager name')
+            );
+        }
 
-        $workflowDescriptor = $wf->getWorkflowDescriptor('example');
+        if (null === $id || '' === trim($id)) {
+            return new ApiProblemResponse(
+                new ApiProblem(400, 'Invalid workflow name')
+            );
+        }
 
-        //$model = new \OldTown\Workflow\Designer\Server\View\WorkflowDescriptorApiModel($workflowDescriptor);
+        try {
+            /** @var WorkflowInterface $workflow */
+            $workflowServiceName = sprintf('workflow.manager.%s', $workflowManager);
+            $workflow = $this->getServiceLocator()->get($workflowServiceName);
+
+            $workflowDescriptor = $workflow->getWorkflowDescriptor($id);
+        } catch (\Exception $e) {
+            return new ApiProblemResponse(
+                new ApiProblem(400, $e->getMessage())
+            );
+        }
+
+
+
 
         return $workflowDescriptor;
     }
