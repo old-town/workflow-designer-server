@@ -8,31 +8,36 @@ namespace OldTown\Workflow\Designer\Server;
 return [
     'router' => [
         'routes' => [
-            'workflow-designer' => [
-                'type' => 'Literal',
-                'options' => [
-                    'route' => '/workflow/designer/',
-                ],
+            'workflow' => [
                 'may_terminate' => true,
                 'child_routes' => [
-                    'api' => [
+                    'designer' => [
                         'type' => 'Literal',
                         'options' => [
-                            'route' => 'api/',
+                            'route' => 'designer/',
                         ],
                         'may_terminate' => true,
                         'child_routes' => [
-                            'workflow-descriptor' => [
-                                'type' => 'Segment',
+                            'api' => [
+                                'type' => 'Literal',
                                 'options' => [
-                                    'route' => 'v1/rest/workflow-manager/[:workflowManager]/workflow-name[/:workflowName][/]',
-                                    'constraints' => [
-                                        //'id' => '[0-9]*',
-                                    ],
-                                    'defaults' => [
-                                        'controller' => 'OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptorController'
-                                    ]
+                                    'route' => 'api/',
                                 ],
+                                'may_terminate' => true,
+                                'child_routes' => [
+                                    'workflow-descriptor' => [
+                                        'type' => 'Segment',
+                                        'options' => [
+                                            'route' => 'v1/rest/workflow-manager/[:workflowManager]/workflow-name[/:workflowName][/]',
+                                            'constraints' => [
+                                                //'id' => '[0-9]*',
+                                            ],
+                                            'defaults' => [
+                                                'controller' => 'OldTown\Workflow\Designer\Server\Api\V1\Rest\WorkflowDescriptorController'
+                                            ]
+                                        ],
+                                    ]
+                                ]
                             ]
                         ]
                     ]
