@@ -9,14 +9,12 @@ return [
     'router' => [
         'routes' => [
             'workflow' => [
-                'may_terminate' => true,
                 'child_routes' => [
                     'designer' => [
                         'type' => 'Literal',
                         'options' => [
                             'route' => 'designer/',
                         ],
-                        'may_terminate' => true,
                         'child_routes' => [
                             'api' => [
                                 'type' => 'Literal',
