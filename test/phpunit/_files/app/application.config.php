@@ -1,6 +1,9 @@
 <?php
-return array(
-    'modules' => array(
+
+use OldTown\Workflow\Designer\Server\PhpUnit\Test\Paths;
+
+return [
+    'modules' => [
         'ZF\\ApiProblem',
         'ZF\\Configuration',
         'ZF\\MvcAuth',
@@ -8,18 +11,13 @@ return array(
         'ZF\\ContentNegotiation',
         'ZF\\ContentValidation',
         'ZF\\Rest',
-        'OldTown\\Workflow\\Designer\\Server'
-    ),
-
-    'module_listener_options' => array(
-
-        'module_paths' => array(
-            './module',
-            './vendor',
-        ),
-
-        'config_glob_paths' => array(
-            __DIR__ . '/config/autoload/{{,*.}global,{,*.}local}.php',
-        ),
-    )
-);
+        'OldTown\\Workflow\\ZF2',
+        'OldTown\\Workflow\\Designer\\Server',
+    ],
+    'module_listener_options' => [
+        'module_paths' => [
+            'OldTown\\Workflow\\ZF2\\View' => Paths::getPathToModule(),
+        ],
+        'config_glob_paths' => []
+    ]
+];

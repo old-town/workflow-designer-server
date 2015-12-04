@@ -35,4 +35,14 @@ class Paths
 
         return static::$pathToAppConfig;
     }
+
+    /**
+     * Путь до директории где находится файл инициирующий приложение
+     *
+     * @return string
+     */
+    public static function getPathToModule()
+    {
+        return __DIR__ . '/../../';
+    }
 }
