@@ -26,16 +26,16 @@
     "zendframework/zend-mvc": "~2.4.0",
     "zendframework/zend-view": "~2.4.0",
     "zendframework/zend-servicemanager": "~2.4.0",
-    "zfcampus/zf-rest": "~1.2",
-    "zfcampus/zf-configuration": "~1.1",
-    "zfcampus/zf-content-validation": "~1.2"
+    "zfcampus/zf-rest": "~1.2.0",
+    "zfcampus/zf-configuration": "~1.1.0",
+    "zfcampus/zf-content-validation": "~1.2.0"
 
   },
   "require-dev": {
     "ext-curl": "*",
-    "fabpot/php-cs-fixer": "1.9.1",
-    "phpunit/phpunit": "4.7.7",
-    "phpunit/phpcov": "2.0.1",
+    "fabpot/php-cs-fixer": "~1.11.0",
+    "phpunit/phpunit": "~4.8.0",
+    "phpunit/phpcov": "~2.0.0",
     "zendframework/zend-loader": "~2.4.0",
     "zendframework/zend-test": "~2.4.0",
     "zendframework/zend-serializer": "~2.4.0",
@@ -45,7 +45,7 @@
     "zendframework/zend-config": "~2.4.0",
     "zendframework/zend-version": "~2.4.0",
     "zendframework/zend-text": "~2.4.0",
-    "satooshi/php-coveralls": "dev-master"
+    "satooshi/php-coveralls": "~1.0.0"
   },
   "autoload": {
     "psr-4": {
