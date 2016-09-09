@@ -11,6 +11,7 @@ use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use ZF\Rest\AbstractResourceListener;
 use ZF\ApiProblem\ApiProblemResponse;
 use ZF\ApiProblem\ApiProblem;
+use OldTown\Workflow\ZF2\Options\ModuleOptions as WorkflowZF2ModuleOptions;
 
 
 /**
@@ -47,8 +48,13 @@ class WorkflowDescriptorEntityResource extends AbstractResourceListener implemen
         }
 
         try {
+            $serviceLocator = $this->getServiceLocator();
+
+            /** @var WorkflowZF2ModuleOptions $moduleOptions */
+            $moduleOptions = $serviceLocator->get(WorkflowZF2ModuleOptions::class);
+
             /** @var WorkflowInterface $workflow */
-            $workflowServiceName = sprintf('workflow.manager.%s', $workflowManager);
+            $workflowServiceName = sprintf($moduleOptions->getWorkflowManagerServiceNamePattern(), $workflowManager);
             $workflow = $this->getServiceLocator()->get($workflowServiceName);
 
             $workflowDescriptor = $workflow->getWorkflowDescriptor($id);
